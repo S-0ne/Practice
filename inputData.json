@@ -1,0 +1,16 @@
+[
+  {
+    "reasonCode": "125",
+    "shop": "25",
+    "month": "09",
+    "amount": 50000,
+    "normHours": 105
+  },
+  {
+    "reasonCode": "16",
+    "shop": "15",
+    "month": "515",
+    "amount": 21345,
+    "normHours": 156
+  }
+]
