@@ -1,43 +1,29 @@
-const readline = require('readline');
+const prompt = require("prompt-sync")()
 
-function getInput(prompt) {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-
-  return new Promise((resolve) => {
-    rl.question(prompt, (answer) => {
-      rl.close();
-      resolve(answer);
-    });
-  });
+function getInput() {
+    const x = parseFloat(prompt("Enter the value of x:"));
+    const y = parseFloat(prompt("Enter the value of y:"));
+    const z = parseFloat(prompt("Enter the value of z:"));
+    return { x, y, z };
 }
 
-function getECTSGrade(score) {
-  if (score >= 90 && score <= 100) {
-    return 'A';
-  } else if (score >= 82 && score <= 89) {
-    return 'B';
-  } else if (score >= 74 && score <= 81) {
-    return 'C';
-  } else if (score >= 64 && score <= 73) {
-    return 'D';
-  } else if (score >= 60 && score <= 63) {
-    return 'E';
-  } else if (score >= 35 && score <= 59) {
-    return 'FX';
-  } else if (score >= 0 && score <= 34) {
-    return 'F';
-  } else {
-    return 'Invalid score';
-  }
+function calculateT(x, y) {
+    return Math.sqrt(x) + y;
 }
 
-async function main() {
-  const score = parseFloat(await getInput('Enter the student\'s score: '));
-  const grade = getECTSGrade(score);
-  console.log(`The ECTS grade for a score of ${score} is: ${grade}`);
+function calculateP(t, z) {
+    return 1 / t + 1 / z;
+}
+
+function outputResult(p) {
+    console.log("The value of p(x, y, z) is: " + p);
+}
+
+function main() {
+    const { x, y, z } = getInput();
+    const t = calculateT(x, y);
+    const p = calculateP(t, z);
+    outputResult(p);
 }
 
 main();
